@@ -97,11 +97,20 @@ function createInstance(ImageId) {
   });
 }
 
-
+// 7. reboot instance
+function rebootInstance(instanceId) {
+  return new Promise((resolve, reject) => {
+    ec2.rebootInstances({ InstanceIds: [instanceId] }, function (err, data) {
+      if (err) {
+        console.log(err, err.stack);
+        reject(err);
+      } else resolve(data);
+    });
+  });
+}
 
 async function main() {
-  let result = await createInstance("ami-0ef8e5a4ac5934a2e");
-  console.log("asfs");
+  let result = await rebootInstance("i-0542cd4f7f4c527b0");
   console.log(result);
 }
 
