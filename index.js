@@ -54,8 +54,20 @@ function startInstance(instanceId) {
   });
 }
 
+// 4. available regions
+function getAvailableRegions() {
+  return new Promise((resolve, reject) => {
+    ec2.describeRegions(function (err, data) {
+      if (err) {
+        console.log(err, err.stack);
+        reject(err);
+      } else resolve(data);
+    });
+  });
+}
+
 async function main() {
-  let result = await startInstance("i-0542cd4f7f4c527b0");
+  let result = await getAvailableRegions();
   console.log(result);
 }
 
