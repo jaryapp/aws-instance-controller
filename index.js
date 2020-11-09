@@ -66,8 +66,20 @@ function getAvailableRegions() {
   });
 }
 
+// 5. stop instance
+function stopInstance(instanceId) {
+  return new Promise((resolve, reject) => {
+    ec2.stopInstances({ InstanceIds: [instanceId] }, function (err, data) {
+      if (err) {
+        console.log(err, err.stack);
+        reject(err);
+      } else resolve(data);
+    });
+  });
+}
+
 async function main() {
-  let result = await getAvailableRegions();
+  let result = await stopInstance("i-0542cd4f7f4c527b0");
   console.log(result);
 }
 
