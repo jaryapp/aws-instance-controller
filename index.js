@@ -1,4 +1,5 @@
 var AWS = require("aws-sdk");
+const { resolve } = require("path");
 AWS.config.loadFromPath("./config.json");
 
 var ec2 = new AWS.EC2({ region: "us-east-1" });
@@ -78,8 +79,29 @@ function stopInstance(instanceId) {
   });
 }
 
+// 6. create instance
+function createInstance(ImageId) {
+  const option = {
+    ImageId,
+    InstanceType: "t2.micro",
+    MaxCount: 1,
+    MinCount: 1,
+  };
+  return new Promise((resolve, reject) => {
+    ec2.runInstances(option, function (err, data) {
+      if (err) {
+        console.log(err, err.stack);
+        reject(err);
+      } else resolve(data);
+    });
+  });
+}
+
+
+
 async function main() {
-  let result = await stopInstance("i-0542cd4f7f4c527b0");
+  let result = await createInstance("ami-0ef8e5a4ac5934a2e");
+  console.log("asfs");
   console.log(result);
 }
 
