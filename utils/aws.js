@@ -1,24 +1,12 @@
 var AWS = require("aws-sdk");
-AWS.config.loadFromPath("./config.json");
+const config = require("./config.json");
+AWS.config = (config);
 
 var ec2 = new AWS.EC2({ region: "us-east-1" });
-var iam = new AWS.IAM();
-
-// 1. list instance
-function getListInstance() {
-  return new Promise((resolve, reject) => {
-    ec2.describeInstances(function (err, data) {
-      if (err) {
-        console.log(err, err.stack);
-        reject(err);
-      } else resolve(data);
-    });
-  });
-}
 
 // 1. list instance
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#describeInstances-property
-function getListInstance() {
+export function getListInstance() {
   return new Promise((resolve, reject) => {
     ec2.describeInstances(function (err, data) {
       if (err) {
@@ -113,7 +101,6 @@ function rebootInstance(instanceId) {
 function getListImages() {
   return new Promise((resolve, reject) => {
     ec2.describeImages({ Owners: ["self"] }, function (err, data) {
-      console.log("asfsf");
       if (err) {
         console.log(err, err.stack);
         reject(err);
