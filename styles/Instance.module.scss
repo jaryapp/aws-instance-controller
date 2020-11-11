@@ -1,0 +1,30 @@
+.instance-list {
+  display: flex;
+  flex-flow: wrap;
+  .instance-box {
+    width: 25%;
+    padding: 20px;
+    .instance {
+      border: 1px solid rgb(228, 228, 228);
+      text-align: center;
+
+      .title {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+      .desc {
+      }
+    }
+  }
+  @media (min-width: 501px) and (max-width: 1280px) {
+    .instance-box {
+      width: 50%;
+    }
+  }
+  @media (max-width: 500px) {
+    .instance-box {
+      width: 100%;
+    }
+  }
+}

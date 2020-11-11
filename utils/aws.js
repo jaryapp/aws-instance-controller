@@ -1,6 +1,6 @@
 var AWS = require("aws-sdk");
 const config = require("./config.json");
-AWS.config = (config);
+AWS.config = config;
 
 var ec2 = new AWS.EC2({ region: "us-east-1" });
 
@@ -19,7 +19,7 @@ export function getListInstance() {
 
 // 2. available zones
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#describeAvailabilityZones-property
-function getAvailableZones() {
+export function getAvailableZones() {
   return new Promise((resolve, reject) => {
     ec2.describeAvailabilityZones(function (err, data) {
       if (err) {
@@ -32,7 +32,7 @@ function getAvailableZones() {
 
 // 3. start instance
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#startInstances-property
-function startInstance(instanceId) {
+export function startInstance(instanceId) {
   return new Promise((resolve, reject) => {
     ec2.startInstances({ InstanceIds: [instanceId] }, function (err, data) {
       if (err) {
@@ -44,7 +44,7 @@ function startInstance(instanceId) {
 }
 
 // 4. available regions
-function getAvailableRegions() {
+export function getAvailableRegions() {
   return new Promise((resolve, reject) => {
     ec2.describeRegions(function (err, data) {
       if (err) {
@@ -56,7 +56,7 @@ function getAvailableRegions() {
 }
 
 // 5. stop instance
-function stopInstance(instanceId) {
+export function stopInstance(instanceId) {
   return new Promise((resolve, reject) => {
     ec2.stopInstances({ InstanceIds: [instanceId] }, function (err, data) {
       if (err) {
@@ -68,7 +68,7 @@ function stopInstance(instanceId) {
 }
 
 // 6. create instance
-function createInstance(ImageId) {
+export function createInstance(ImageId) {
   const option = {
     ImageId,
     InstanceType: "t2.micro",
@@ -86,7 +86,7 @@ function createInstance(ImageId) {
 }
 
 // 7. reboot instance
-function rebootInstance(instanceId) {
+export function rebootInstance(instanceId) {
   return new Promise((resolve, reject) => {
     ec2.rebootInstances({ InstanceIds: [instanceId] }, function (err, data) {
       if (err) {
@@ -98,7 +98,7 @@ function rebootInstance(instanceId) {
 }
 
 // 8. list images
-function getListImages() {
+export function getListImages() {
   return new Promise((resolve, reject) => {
     ec2.describeImages({ Owners: ["self"] }, function (err, data) {
       if (err) {
@@ -108,10 +108,3 @@ function getListImages() {
     });
   });
 }
-
-async function main() {
-  let result = await getListImages();
-  console.log(result);
-}
-
-main();

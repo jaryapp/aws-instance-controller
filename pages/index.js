@@ -1,5 +1,10 @@
 import styles from "../styles/Home.module.css";
+import InstanceList from "../component/InstanceList";
 
 export default function Home() {
-  return <div className={styles.container}></div>;
+  return (
+    <>
+      <InstanceList />
+    </>
+  );
 }
