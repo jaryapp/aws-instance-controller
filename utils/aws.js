@@ -1,5 +1,4 @@
 var AWS = require("aws-sdk");
-const { resolve } = require("path");
 AWS.config.loadFromPath("./config.json");
 
 var ec2 = new AWS.EC2({ region: "us-east-1" });
