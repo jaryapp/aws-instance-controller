@@ -3,17 +3,25 @@
   flex-flow: wrap;
   .instance-box {
     width: 25%;
-    padding: 20px;
+    padding: 10px 20px;
     .instance {
       border: 1px solid rgb(228, 228, 228);
       text-align: center;
+      padding: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      border-radius: 10px;
 
       .title {
         font-weight: bold;
-        font-size: 20px;
-        margin-bottom: 15px;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
       }
       .desc {
+        font-size: 0.8rem;
+      }
+      &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
       }
     }
   }
