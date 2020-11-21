@@ -1,8 +1,6 @@
 import classNames from "classnames/bind";
 import axios from "axios";
 import { useState } from "react";
-import { FaPlay,FaPause} from "react-icons/fa";
-import { RiRestartLine} from "react-icons/ri";
 import { TiDocumentText } from "react-icons/ti";
 import Modal from "./Modal";
 import styles from "../styles/Instance.module.scss";

@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import styles from "../styles/Instance.module.scss";
 import Instance from "./Instance";
 import axios from "axios";
+import { BsFillPlusCircleFill } from "react-icons/bs";
 
 const cx = classNames.bind(styles);
 
@@ -24,11 +25,19 @@ export default function InstanceList() {
 
   },[refresh])
 
+  function createInstance(){
+    axios("/api/instance/create",{params:{
+      imageId:"ami-0ef8e5a4ac5934a2e"
+    }})
+  }
+
   return (
     <div className={cx("instance-list")}>
       {instanceList.map((instance) => (
         <Instance data={instance}  />
       ))}
+      <div className={cx("instance-box")}><div className={cx("instance","create")} onClick={()=>createInstance()}><BsFillPlusCircleFill/></div></div>
+
     </div>
   );
 }

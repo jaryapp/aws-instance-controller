@@ -1,8 +1,8 @@
 import { useState,useEffect } from "react";
 import classNames from "classnames/bind";
+import axios from "axios";
 import styles from "../styles/Instance.module.scss";
 import Image from "./Image";
-import axios from "axios";
 
 const cx = classNames.bind(styles);
 

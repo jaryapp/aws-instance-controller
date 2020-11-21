@@ -46,6 +46,7 @@ export default function Instance({ data }) {
   }
 
   const instanceName = data.Tags.length ? data.Tags[0].Value : "-"
+  const Security = data.SecurityGroups.length ? data.SecurityGroups[0].GroupName : "-"
   var modalContents = []
 
   modalContents = [
@@ -136,7 +137,7 @@ export default function Instance({ data }) {
           <div>{data.InstanceId}</div>
           <div>{data.InstanceType}</div>
           <div>{data.PrivateIpAddress}</div>
-          <div>{data.SecurityGroups[0].GroupName}</div>
+          <div>{Security}</div>
         </div>
       </div>
     </div>

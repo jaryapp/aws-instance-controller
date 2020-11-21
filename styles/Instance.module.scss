@@ -12,6 +12,16 @@
       transition: 0.3s;
       border-radius: 10px;
       position: relative;
+      min-height: 140px;
+
+      &.create{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: rgb(0, 180, 0);
+        cursor: pointer;
+      }
 
       .title {
         font-weight: bold;
@@ -38,6 +48,9 @@
 
         &.stopped{
           background:rgb(224, 41, 41);
+        }
+        &.terminated{
+          background: black;
         }
       }
 
