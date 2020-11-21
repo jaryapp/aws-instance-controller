@@ -1,7 +1,8 @@
 import classNames from "classnames/bind";
 import axios from "axios";
 import { useState } from "react";
-import { FaPlay,FaPause } from "react-icons/fa";
+import { FaPlay,FaPause} from "react-icons/fa";
+import { RiRestartLine} from "react-icons/ri";
 import styles from "../styles/Instance.module.scss";
 
 const cx = classNames.bind(styles);
@@ -25,7 +26,12 @@ export default function Instance({ data }) {
     axios("/api/instance/stop",{params:{
       instanceId:data.InstanceId
     }})
- 
+  }
+
+  function rebootInstance(){
+    axios("/api/instance/reboot",{params:{
+      instanceId:data.InstanceId
+    }})
   }
 
   return (
@@ -45,8 +51,11 @@ export default function Instance({ data }) {
               instanceState == 'stopped' ? <div className={cx("round")} onClick={()=>{startInstance()}}><FaPlay className={cx("play")}/></div> :''
             }
             {
-              instanceState == 'running' ? <div className={cx("round")} onClick={()=>{stopInstance()}}><FaPause className={cx("stop")}/></div> :''
+              instanceState == 'running' ? <>
+              <div className={cx("round")} onClick={()=>{stopInstance()}}><FaPause className={cx("stop")}/></div>
+              <div className={cx("round")} onClick={()=>{rebootInstance()}}><RiRestartLine className={cx("reboot")}/></div></> :''
             }
+            
         </div> : ''
         }
      
