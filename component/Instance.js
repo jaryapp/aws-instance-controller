@@ -3,12 +3,15 @@ import axios from "axios";
 import { useState } from "react";
 import { FaPlay,FaPause} from "react-icons/fa";
 import { RiRestartLine} from "react-icons/ri";
+import { TiDocumentText } from "react-icons/ti";
+import Modal from "./Modal";
 import styles from "../styles/Instance.module.scss";
 
 const cx = classNames.bind(styles);
 
 export default function Instance({ data }) {
 
+  const [openModal,setOpenModal] = useState(false)
   const [hover,setHover] = useState(false)
   const instanceState = data.State.Name
 
@@ -34,8 +37,71 @@ export default function Instance({ data }) {
     }})
   }
 
+  function hideDetail(){
+    setOpenModal(false)
+  }
+
+  function showDetail(){
+    setOpenModal(true)
+  }
+
+  const instanceName = data.Tags.length ? data.Tags[0].Value : "-"
+  var modalContents = []
+
+  modalContents = [
+    {
+      label:"Architecture",
+      value:data.Architecture
+    },
+    {
+      label:"ImageId",
+      value:data.ImageId
+    },
+    {
+      label:"InstanceId",
+      value:data.InstanceId
+    },
+    {
+      label:"InstanceType",
+      value:data.InstanceType
+    },
+    {
+      label:"LaunchTime",
+      value:data.LaunchTime
+    },
+    {
+      label:"PrivateDnsName",
+      value:data.PrivateDnsName
+    },
+    {
+      label:"PrivateIpAddress",
+      value:data.PrivateIpAddress
+    },
+    {
+      label:"PublicDnsName",
+      value:data.PublicDnsName
+    },
+    {
+      label:"PublicIpAddress",
+      value:data.PublicIpAddress
+    },
+    {
+      label:"State",
+      value:data.State.Name
+    },
+
+  ]
+
+  console.log(data)
+
+  // const modalContents = data.map(item=>{
+  //   console.log(item)
+  
+  // })
+
   return (
     <div className={cx("instance-box")}>
+      {openModal ? <Modal title={instanceName} contents={modalContents} closeModal={hideDetail} /> : ''}
       <div className={cx("instance")}
        onMouseEnter={handleMouseHover}
        onMouseLeave={handleMouseHover}
@@ -55,20 +121,22 @@ export default function Instance({ data }) {
               <div className={cx("round")} onClick={()=>{stopInstance()}}><FaPause className={cx("stop")}/></div>
               <div className={cx("round")} onClick={()=>{rebootInstance()}}><RiRestartLine className={cx("reboot")}/></div></> :''
             }
-            
+
+         <div className={cx("round")} onClick={()=>{showDetail()}}><TiDocumentText className={cx("detail")}/></div>
+
         </div> : ''
         }
      
       <div className={cx("state",instanceState)}></div>
 
         <div className={cx("title")}>
-          {data.Tags.length ? data.Tags[0].Value : "Undefined"}
+          {instanceName}
         </div>
         <div className={cx("desc")}>
           <div>{data.InstanceId}</div>
-          <div>t2.micro</div>
-          <div>54.160.73.86</div>
-          <div>htcondor-security</div>
+          <div>{data.InstanceType}</div>
+          <div>{data.PrivateIpAddress}</div>
+          <div>{data.SecurityGroups[0].GroupName}</div>
         </div>
       </div>
     </div>

@@ -7,8 +7,6 @@ import axios from "axios";
 
 const cx = classNames.bind(styles);
 
-// console.log(test.Reservations[0].Instances);
-
 export default function InstanceList() {
 
   const [instanceList,setInstanceList] = useState([])
@@ -19,7 +17,6 @@ export default function InstanceList() {
       const instances = res.data.Reservations.map(
         (reservation) => reservation.Instances.map((instance) => instance)[0]
       );
-      console.log(instances)
       setInstanceList(instances)
       setTimeout(()=>{
         setRefresh(refresh+1)
