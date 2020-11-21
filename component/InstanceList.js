@@ -2,7 +2,6 @@ import { useState,useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "../styles/Instance.module.scss";
 import Instance from "./Instance";
-import test from "./test.json";
 import axios from "axios";
 
 const cx = classNames.bind(styles);

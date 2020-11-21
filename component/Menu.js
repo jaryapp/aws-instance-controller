@@ -1,12 +1,15 @@
 import styles from "../styles/Menu.module.scss";
 import classNames from "classnames/bind";
+import { useRouter } from 'next/router'
 
 const cx = classNames.bind(styles);
 
 export default function Menu() {
+  const router = useRouter()
+
   const menus = [
     {
-      key: "instance",
+      key: "/",
       label: "인스턴스",
     },
     {
@@ -25,7 +28,7 @@ export default function Menu() {
   return (
     <div className={cx("menu-box")}>
       {menus.map((menu) => {
-        return <div className={cx("menu")}>{menu.label}</div>;
+        return <div className={cx("menu") } onClick={()=>{router.push(menu.key)}}>{menu.label}</div>;
       })}
     </div>
   );
