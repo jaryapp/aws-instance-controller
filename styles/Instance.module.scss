@@ -11,6 +11,7 @@
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       transition: 0.3s;
       border-radius: 10px;
+      position: relative;
 
       .title {
         font-weight: bold;
@@ -22,6 +23,83 @@
       }
       &:hover {
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .state{
+        width:10px;
+        height: 10px;
+        border-radius: 50%;
+        position: absolute;
+        top:5px;
+        right:7px;
+        &.running{
+          background:rgb(45, 204, 45);
+        }
+
+        &.stopped{
+          background:rgb(224, 41, 41);
+        }
+      }
+
+      .loading{
+        position: absolute;
+        display: flex;
+        width:100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.61);
+        border-radius: 10px;
+        top:0px;
+        left: 0px;
+        align-items: center;
+        justify-content: center;
+        .loader {
+          border: 8px solid #f3f3f3;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          -webkit-animation: spin 2s linear infinite; /* Safari */
+          animation: spin 2s linear infinite;
+          &.pending{
+            border-top: 8px solid #3079bd;
+
+          }
+          &.stopping{
+            border-top: 8px solid #af2d2d;
+
+          }
+        }
+        
+        /* Safari */
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+        
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .round{
+          width:50px;
+          height: 50px;
+          background: rgb(243, 243, 243);
+          border-radius: 50%;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          .play{
+            height: 40px;
+            color:rgb(0, 160, 0);
+          }
+          .stop{
+            height: 40px;
+            color:rgb(163, 24, 0);
+          }
+        }
       }
     }
   }
