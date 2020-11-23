@@ -11,10 +11,36 @@
     "aws-sdk": "^2.789.0",
     "axios": "^0.21.0",
     "classnames": "^2.2.6",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-prettier": "^6.15.0",
     "next": "10.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "^3.11.0",
     "sass": "^1.29.0"
+  },
+  "devDependencies": {
+    "eslint": "7.2.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-react": "7.21.5",
+    "eslint-plugin-react-hooks": "4.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "prettier"
+    ],
+    "rules": {
+      "react/prefer-stateless-function": 0,
+      "react/jsx-filename-extension": 0,
+      "react/jsx-one-expression-per-line": 0,
+      "react/react-in-jsx-scope":0,
+      "jsx-a11y/click-events-have-key-events":0,
+      "jsx-a11y/no-static-element-interactions":0
+    },
+    "env": {
+      "browser": true
+    }
   }
 }
