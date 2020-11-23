@@ -2,14 +2,15 @@ import accessKeyParser from './accessKeyParser';
 
 const fs = require('fs');
 const AWS = require('aws-sdk');
-const config = require('./config.json');
 
-AWS.config = config;
+AWS.config = fs.existsSync('utils/config.json')
+  ? JSON.stringify(fs.readFileSync('utils/config.json'))
+  : {};
 let ec2 = new AWS.EC2({ region: 'us-east-1' });
 
 export function setConfig(config) {
   const parsed = accessKeyParser(config);
-  fs.writeFileSync('config.json', parsed);
+  fs.writeFileSync('utils/config.json', JSON.stringify(parsed));
   AWS.config = parsed;
 
   ec2 = new AWS.EC2({ region: 'us-east-1' });

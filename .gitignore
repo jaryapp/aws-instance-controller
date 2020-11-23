@@ -34,4 +34,4 @@ yarn-error.log*
 .vercel
 
 test.json
-utils/config.json
+config.json
