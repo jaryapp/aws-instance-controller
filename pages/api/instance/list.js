@@ -2,8 +2,11 @@
 import { getListInstance } from "../../../utils/aws";
 
 export default (req, res) => {
-  res.statusCode = 200;
   getListInstance().then((result) => {
+    res.statusCode = 200;
     res.json(result);
+  }).catch(err=>{
+    res.statusCode = 400;
+    res.json(err);
   });
 };

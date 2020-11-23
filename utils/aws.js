@@ -1,8 +1,19 @@
-var AWS = require("aws-sdk");
-const config = require("./config.json");
-AWS.config = config;
+import accessKeyParser from './accessKeyParser';
 
-var ec2 = new AWS.EC2({ region: "us-east-1" });
+const fs = require('fs');
+const AWS = require('aws-sdk');
+const config = require('./config.json');
+
+AWS.config = config;
+let ec2 = new AWS.EC2({ region: 'us-east-1' });
+
+export function setConfig(config) {
+  const parsed = accessKeyParser(config);
+  fs.writeFileSync('config.json', parsed);
+  AWS.config = parsed;
+
+  ec2 = new AWS.EC2({ region: 'us-east-1' });
+}
 
 // 1. list instance
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#describeInstances-property
@@ -71,7 +82,7 @@ export function stopInstance(instanceId) {
 export function createInstance(ImageId) {
   const option = {
     ImageId,
-    InstanceType: "t2.micro",
+    InstanceType: 't2.micro',
     MaxCount: 1,
     MinCount: 1,
   };
@@ -100,7 +111,7 @@ export function rebootInstance(instanceId) {
 // 8. list images
 export function getListImages() {
   return new Promise((resolve, reject) => {
-    ec2.describeImages({ Owners: ["self"] }, function (err, data) {
+    ec2.describeImages({ Owners: ['self'] }, function (err, data) {
       if (err) {
         console.log(err, err.stack);
         reject(err);
