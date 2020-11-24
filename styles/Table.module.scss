@@ -1,0 +1,24 @@
+.table {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid #eeeeee;
+  border-collapse: collapse;
+
+  @media (max-width: 1280px) {
+    width: 100%;
+  }
+
+  th,
+  td {
+    border: 1px solid #eeeeee;
+    padding: 10px 3px;
+  }
+
+  th {
+    color: rgb(37, 37, 37);
+  }
+  td {
+    color: gray;
+  }
+}
