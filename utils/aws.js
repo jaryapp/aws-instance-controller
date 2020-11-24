@@ -81,7 +81,7 @@ export function stopInstance(instanceId) {
 }
 
 // 6. create instance
-export function createInstance(ImageId, SecurityGroupId) {
+export function createInstance(ImageId, SecurityGroupId, Tag) {
   const option = {
     ImageId,
     InstanceType: 't2.micro',
@@ -89,6 +89,17 @@ export function createInstance(ImageId, SecurityGroupId) {
     MinCount: 1,
     SecurityGroupIds: [SecurityGroupId],
     KeyName: 'awskey',
+    TagSpecifications: [
+      {
+        ResourceType: 'instance',
+        Tags: [
+          {
+            Key: 'Name',
+            Value: Tag,
+          },
+        ],
+      },
+    ],
   };
   return new Promise((resolve, reject) => {
     ec2.runInstances(option, function (err, data) {

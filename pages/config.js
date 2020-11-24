@@ -30,9 +30,9 @@ function ConfigPage() {
   }
 
   const sample = `[default]
-aws_access_key_id=ASIAY5KPK6Q66LUQK7UN
-aws_secret_access_key=oZ+Pl7OLDBiyX0n950rhZdXik0PkyGm3L0eqnnnm
-aws_session_token=FwoGZXIvYXdzEE4aDJo04akf6rws7k6ZYSLCAUm28qrWquXChNrAXr/23w4BWbggMnqg6xmqnn5pPITIXpyor4EzatXvQxKXjEU6tjBz0IAWHPMjuQHrWgVlbU01CM+v9jsUqB3LMwhTGbONOkqCLgndYunPeJtuSHFNKbN+xMJkanwMO1hcPvFgqDPO40e5vTskj0r5TEcLFuz7+pwIyTtc8LCPKR4W8KOlFagA3f3jVLior0BKQ2dclA/5mRytaefTX7YQoCvR5I3Ug/2UgXdTjyAFBfxp5cqDKpEUKJPq7P0FMi1O/61q4SO7T4ItcvhW0gZ6e6eMUeYKcdsSOpqFyANAxwG+ZytHr8C6N7hleyo=
+aws_access_key_id=XXXXX
+aws_secret_access_key=XXXXX
+aws_session_token=XXXXX
   `;
 
   return (

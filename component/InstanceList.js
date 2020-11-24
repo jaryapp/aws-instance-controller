@@ -5,11 +5,13 @@ import axios from 'axios';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import styles from '../styles/Instance.module.scss';
 import Instance from './Instance';
+import InstanceCreateModal from './InstanceCreateModal';
 
 const cx = classNames.bind(styles);
 
 export default function InstanceList() {
   const router = useRouter();
+  const [openCreateModal, setOpenCreateModal] = useState(false);
   const [instanceList, setInstanceList] = useState([]);
   const [refresh, setRefresh] = useState(0);
 
@@ -41,13 +43,13 @@ export default function InstanceList() {
       });
   }, [refresh]);
 
-  function createInstance() {
-    axios('/api/instance/create', {
-      params: {
-        imageId: 'ami-034436dcfe8dc43de',
-        securityGroupId: 'sg-013180122170bd49b',
-      },
-    });
+
+  function hideCreateModal() {
+    setOpenCreateModal(false);
+  }
+
+  function showCreateModal() {
+    setOpenCreateModal(true);
   }
 
   return (
@@ -58,11 +60,16 @@ export default function InstanceList() {
       <div className={cx('instance-box')}>
         <div
           className={cx('instance', 'create')}
-          onClick={() => createInstance()}
+          onClick={() => showCreateModal()}
         >
           <BsFillPlusCircleFill />
         </div>
       </div>
+      {openCreateModal ? (
+        <InstanceCreateModal closeModal={hideCreateModal} />
+      ) : (
+        ''
+      )}
     </div>
   );
 }
