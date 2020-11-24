@@ -1,6 +1,7 @@
 .instance-list {
   display: flex;
   flex-flow: wrap;
+  position: relative;
   .instance-box {
     width: 25%;
     padding: 10px 20px;
@@ -143,5 +144,30 @@
     .instance-box {
       width: 100%;
     }
+  }
+}
+
+.state-info {
+  position: absolute;
+  right: 20px;
+  top: -18px;
+  .state {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    &.running {
+      background: rgb(45, 204, 45);
+    }
+
+    &.stopped {
+      background: rgb(224, 41, 41);
+    }
+    &.terminated {
+      background: black;
+    }
+  }
+  .label {
+    margin-right: 10px;
   }
 }

@@ -99,7 +99,7 @@ export default function Instance({ data }) {
     },
   ];
 
-  console.log(data);
+  // console.log(data);
 
   // const modalContents = data.map(item=>{
   //   console.log(item)

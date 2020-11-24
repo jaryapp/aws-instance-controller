@@ -17,7 +17,7 @@ export default function ImageList() {
     //   const images = res.data.map(
     //     (reservation) => reservation.Instances.map((instance) => instance)[0]
     //   );
-    console.log(res.data)
+    // console.log(res.data)
       setImageList(res.data.Images)
       setTimeout(()=>{
         setRefresh(refresh+1)

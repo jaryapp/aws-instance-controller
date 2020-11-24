@@ -134,3 +134,15 @@ export function getListImages() {
     });
   });
 }
+
+// 9. list security groups
+export function getListSecurityGroups() {
+  return new Promise((resolve, reject) => {
+    ec2.describeSecurityGroups({}, function (err, data) {
+      if (err) {
+        console.log(err, err.stack);
+        reject(err);
+      } else resolve(data);
+    });
+  });
+}
