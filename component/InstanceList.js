@@ -43,7 +43,6 @@ export default function InstanceList() {
       });
   }, [refresh]);
 
-
   function hideCreateModal() {
     setOpenCreateModal(false);
   }
@@ -54,6 +53,14 @@ export default function InstanceList() {
 
   return (
     <div className={cx('instance-list')}>
+      <div className={cx('state-info')}>
+        <div className={cx('state', 'running')} />{' '}
+        <span className={cx('label')}>실행</span>
+        <div className={cx('state', 'stopped')} />{' '}
+        <span className={cx('label')}>중지</span>
+        <div className={cx('state', 'terminated')} />{' '}
+        <span className={cx('label')}>삭제됨</span>
+      </div>
       {instanceList.map((instance) => (
         <Instance data={instance} />
       ))}
