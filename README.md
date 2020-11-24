@@ -2,7 +2,7 @@
 
 ## 프로젝트 개요
 
-Web 페이지를 통해 .Dynamic Virtual Resource Managment 프로그램을 구현
+웹 사이트를 통해 Dynamic Virtual Resource Managment 프로그램을 구현
 
 ## 👨‍💻 Developer
 
