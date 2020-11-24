@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
+import mainLayout from '../layout/main';
 
 import styles from '../styles/config.module.scss';
 
@@ -51,4 +52,4 @@ aws_session_token=FwoGZXIvYXdzEE4aDJo04akf6rws7k6ZYSLCAUm28qrWquXChNrAXr/23w4BWb
   );
 }
 
-export default ConfigPage;
+export default mainLayout(ConfigPage);

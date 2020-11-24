@@ -35,3 +35,6 @@ yarn-error.log*
 
 test.json
 config.json
+config.txt
+*.ppk
+*.pem

@@ -13,14 +13,24 @@ export default function InstanceList() {
   const [instanceList, setInstanceList] = useState([]);
   const [refresh, setRefresh] = useState(0);
 
+  const PRIORITY = {
+    running: 1,
+    pending: 2,
+    stopped: 3,
+    stopping: 4,
+    terminated: 5,
+  };
+
   useEffect(() => {
     axios
       .get('/api/instance/list')
       .then((res) => {
-        console.log(res);
         const instances = res.data.Reservations.map(
           (reservation) => reservation.Instances.map((instance) => instance)[0],
-        );
+        ).sort((a, b) => {
+          return PRIORITY[a.State.Name] - PRIORITY[b.State.Name];
+        });
+
         setInstanceList(instances);
         setTimeout(() => {
           setRefresh(refresh + 1);
@@ -34,7 +44,8 @@ export default function InstanceList() {
   function createInstance() {
     axios('/api/instance/create', {
       params: {
-        imageId: 'ami-0ef8e5a4ac5934a2e',
+        imageId: 'ami-034436dcfe8dc43de',
+        securityGroupId: 'sg-013180122170bd49b',
       },
     });
   }

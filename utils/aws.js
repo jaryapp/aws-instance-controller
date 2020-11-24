@@ -3,17 +3,18 @@ import accessKeyParser from './accessKeyParser';
 const fs = require('fs');
 const AWS = require('aws-sdk');
 
-AWS.config = fs.existsSync('utils/config.json')
-  ? JSON.stringify(fs.readFileSync('utils/config.json'))
-  : {};
-let ec2 = new AWS.EC2({ region: 'us-east-1' });
+let ec2;
+
+if (fs.existsSync('utils/config.txt')) {
+  setConfig(fs.readFileSync('utils/config.txt', 'utf8'));
+}
 
 export function setConfig(config) {
   const parsed = accessKeyParser(config);
-  fs.writeFileSync('utils/config.json', JSON.stringify(parsed));
-  AWS.config = parsed;
 
+  AWS.config = parsed;
   ec2 = new AWS.EC2({ region: 'us-east-1' });
+  fs.writeFileSync('utils/config.txt', config);
 }
 
 // 1. list instance
@@ -80,12 +81,14 @@ export function stopInstance(instanceId) {
 }
 
 // 6. create instance
-export function createInstance(ImageId) {
+export function createInstance(ImageId, SecurityGroupId) {
   const option = {
     ImageId,
     InstanceType: 't2.micro',
     MaxCount: 1,
     MinCount: 1,
+    SecurityGroupIds: [SecurityGroupId],
+    KeyName: 'awskey',
   };
   return new Promise((resolve, reject) => {
     ec2.runInstances(option, function (err, data) {
