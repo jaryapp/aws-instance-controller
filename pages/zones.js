@@ -29,4 +29,4 @@ function ZonesPage() {
   );
 }
 
-export default mainLayout(ZonesPage);
+export default mainLayout({ Page: ZonesPage, Title: 'Zones' });

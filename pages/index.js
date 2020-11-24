@@ -9,4 +9,4 @@ function Home() {
   );
 }
 
-export default mainLayout(Home);
+export default mainLayout({ Page: Home, Title: '인스턴스' });

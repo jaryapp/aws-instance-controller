@@ -20,4 +20,4 @@ function RegionsPage() {
   );
 }
 
-export default mainLayout(RegionsPage);
+export default mainLayout({ Page: RegionsPage, Title: 'Regions' });

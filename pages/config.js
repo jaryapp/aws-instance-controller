@@ -52,4 +52,4 @@ aws_session_token=FwoGZXIvYXdzEE4aDJo04akf6rws7k6ZYSLCAUm28qrWquXChNrAXr/23w4BWb
   );
 }
 
-export default mainLayout(ConfigPage);
+export default mainLayout({ Page: ConfigPage });

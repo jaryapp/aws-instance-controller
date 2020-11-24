@@ -7,25 +7,27 @@ const cx = classNames.bind(styles);
 export default function Menu() {
   const router = useRouter();
 
+  console.log(router);
+
   const menus = [
     {
       key: '/',
       label: '인스턴스',
     },
     {
-      key: 'images',
+      key: '/images',
       label: '이미지',
     },
     {
-      key: 'zones',
+      key: '/zones',
       label: 'zones',
     },
     {
-      key: 'regions',
+      key: '/regions',
       label: 'regions',
     },
     {
-      key: 'config',
+      key: '/config',
       label: '설정',
     },
   ];
@@ -34,7 +36,7 @@ export default function Menu() {
       {menus.map((menu) => {
         return (
           <div
-            className={cx('menu')}
+            className={cx('menu', router.pathname == menu.key ? 'select' : '')}
             onClick={() => {
               router.push(menu.key);
             }}

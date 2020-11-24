@@ -1,5 +1,5 @@
-import mainLayout from "../layout/main";
-import ImageList from "../component/ImageList";
+import mainLayout from '../layout/main';
+import ImageList from '../component/ImageList';
 
 function Home() {
   return (
@@ -9,4 +9,4 @@ function Home() {
   );
 }
 
-export default mainLayout(Home);
+export default mainLayout({ Page: Home, Title: '이미지' });
