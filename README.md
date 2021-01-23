@@ -2,11 +2,15 @@
 
 ## 프로젝트 개요
 
-웹 사이트를 통해 Dynamic Virtual Resource Managment 프로그램을 구현
+웹 사이트를 통해 Dynamic Virtual Resource Managment 프로그램을 구현.
+
 
 ## 👨‍💻 Developer
 
 ![조정제](https://img.shields.io/badge/충북대학교_소프트웨어학과-조정제-blue)
+
+## 프로젝트 UI
+[AWS Web Controller](https://www.notion.so/jaryintro/AWS-Web-Controller-8287a8d46d6540b79f6d3cb3232aafbd)
 
 ## APIs
 
@@ -51,6 +55,5 @@ npm start
 
 ## 🔗 Reference
 
-- https://www.notion.so/jaryintro/AWS-Web-Controller-8287a8d46d6540b79f6d3cb3232aafbd
 - https://youtu.be/2V19P_wz2fs
 - https://aws.amazon.com/ko/sdk-for-node-js/
