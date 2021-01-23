@@ -9,7 +9,7 @@
 
 ![조정제](https://img.shields.io/badge/충북대학교_소프트웨어학과-조정제-blue)
 
-## 기능 소개 및 프로젝트 UI
+## 기능 및 UI
 [AWS Web Controller](https://www.notion.so/jaryintro/AWS-Web-Controller-8287a8d46d6540b79f6d3cb3232aafbd)
 
 ## APIs
