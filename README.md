@@ -9,7 +9,7 @@
 
 ![조정제](https://img.shields.io/badge/충북대학교_소프트웨어학과-조정제-blue)
 
-## 프로젝트 UI
+## 기능 소개 및 프로젝트 UI
 [AWS Web Controller](https://www.notion.so/jaryintro/AWS-Web-Controller-8287a8d46d6540b79f6d3cb3232aafbd)
 
 ## APIs
@@ -44,7 +44,7 @@ npm run build
 npm start
 ```
 
-### 사용방법
+### 페이지 
 
 - "http://localhost:3000" 에 최초 접속 또는 토큰 만료시 /config 페이지로 자동으로 이동됨
 - "/" (메인페이지) - 인스턴스 목록이 나타남(인스턴스를 마우스로 클릭하여 실행/중지/재시작/상세정보 확인)
